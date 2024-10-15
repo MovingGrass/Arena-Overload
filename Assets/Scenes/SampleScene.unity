@@ -1464,6 +1464,7 @@ MonoBehaviour:
   chipSpeed: 2
   frontHealthBar: {fileID: 1123857053}
   backHealthBar: {fileID: 845873685}
+  offset: {x: 0, y: 3, z: 0}
 --- !u!1 &1216277777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,6 +1860,7 @@ MonoBehaviour:
   chipSpeed: 2
   frontHealthBar: {fileID: 1348936916}
   backHealthBar: {fileID: 138584882}
+  offset: {x: 0, y: 3, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
