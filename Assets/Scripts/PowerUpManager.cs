@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
     public DefaultGun1 defaultGun;
     public List<MonoBehaviour> powerUpScripts;
+    public List<GameObject> powerUpUIImages;
     private IPowerUp currentPowerUp;
     private Coroutine powerUpCoroutine;
+    private GameObject activeUIInstance; // Instance Image yang aktif
+    private Image activeImageFill;
 
     private void Start()
     {
@@ -26,6 +30,10 @@ public class PowerUpManager : MonoBehaviour
         if (currentPowerUp != null)
         {
             currentPowerUp.Deactivate();
+            if (activeUIInstance != null)
+            {
+            Destroy(activeUIInstance); // Hapus UI power-up sebelumnya
+            }
         }
         else
         {
