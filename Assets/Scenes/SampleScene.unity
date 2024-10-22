@@ -553,7 +553,7 @@ Canvas:
   m_GameObject: {fileID: 281486008}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1498,7 +1498,10 @@ MonoBehaviour:
   defaultGun: {fileID: 1211577995}
   powerUpScripts:
   - {fileID: 1211577997}
-  powerUpUIImages: []
+  powerUpUIImages:
+  - {fileID: 1403685971050052826, guid: 86074ea2ebf6e4a4e83f760d2b3eed86, type: 3}
+  canvasTransform: {fileID: 0}
+  powerUpImagePosition: {x: 462.55, y: -471.25, z: 0}
 --- !u!1 &1216277777
 GameObject:
   m_ObjectHideFlags: 0
