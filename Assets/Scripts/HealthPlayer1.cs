@@ -63,7 +63,7 @@ public class HealthPlayer1 : MonoBehaviour
     {
         health -= damage;
         lerpTimer = 0f;
-        ShowFloatingText();
+        ShowFloatingText(damage);
     }
 
     public void HealPlayer1(float heal)
@@ -72,10 +72,10 @@ public class HealthPlayer1 : MonoBehaviour
         lerpTimer = 0f;
     }
 
-    void ShowFloatingText()
+    void ShowFloatingText(float damage)
     {
         var go = Instantiate(FloatingText, transform.position + offset, Quaternion.identity, transform);
-        go.GetComponent<TMP_Text>().text = health.ToString(); 
+        go.GetComponent<TMP_Text>().text = damage.ToString(); 
     }
 
 

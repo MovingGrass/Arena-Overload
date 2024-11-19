@@ -12,10 +12,13 @@ public class PowerUpCube : MonoBehaviour
     private Vector3 startPosition;
     private PowerUpManager powerUpManager;
 
+    private PowerUpManager2 powerUpManager2;
+
     void Start()
     {
         startPosition = transform.position;
         powerUpManager = FindObjectOfType<PowerUpManager>();
+        powerUpManager2 = FindObjectOfType<PowerUpManager2>();
         
         if (powerUpManager == null)
         {
@@ -35,7 +38,7 @@ public class PowerUpCube : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        if (other.CompareTag("Player1"))
         {
             // Trigger power-up effect
             if (powerUpManager != null)
@@ -50,6 +53,20 @@ public class PowerUpCube : MonoBehaviour
             }
 
             // Start destroy sequence
+            StartCoroutine(DestroySequence());
+        }
+        else if(other.CompareTag("Player2"))
+        {
+            if (powerUpManager2 != null)
+            {
+                powerUpManager2.ActivatePowerUp();
+            }
+
+            // Play explosion effect
+            if (explosionEffectPrefab != null)
+            {
+                Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
+            }
             StartCoroutine(DestroySequence());
         }
     }

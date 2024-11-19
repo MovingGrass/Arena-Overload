@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultGun2 : MonoBehaviour
+public class RapidFire2 : MonoBehaviour, IPowerUp
 {
-    // Start is called before the first frame update
-    public GameObject bulletPrefab;
+   public GameObject bulletPrefab;
     public Transform shootingPoint2;
-    public float fireRate = 0.2f;  // Time between shots
+    public float fireRate = 0.05f;  // Time between shots
     private float nextFireTime = 0f;
+
+    public float Duration => 10f;
 
     public void Activate()
     {
