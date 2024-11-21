@@ -1383,6 +1383,7 @@ GameObject:
   - component: {fileID: 1211577998}
   - component: {fileID: 1211577997}
   - component: {fileID: 1211577999}
+  - component: {fileID: 1211578000}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Player1
@@ -1536,7 +1537,9 @@ MonoBehaviour:
   defaultGun: {fileID: 1211577995}
   powerUpScripts:
   - {fileID: 1211577997}
+  - {fileID: 1211578000}
   powerUpUIImages:
+  - {fileID: 1403685971050052826, guid: 86074ea2ebf6e4a4e83f760d2b3eed86, type: 3}
   - {fileID: 1403685971050052826, guid: 86074ea2ebf6e4a4e83f760d2b3eed86, type: 3}
   canvasTransform: {fileID: 281486012}
   powerUpImagePosition: {x: 462.55, y: -471.25, z: 0}
@@ -1561,6 +1564,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1211578000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211577988}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c2a02b98a64b5240a28de20b4ae47e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7751253090851320064, guid: e26ef923f0df2cb499add3d98d187a95,
+    type: 3}
+  shootingPoint1: {fileID: 1600849556}
+  fireRate: 0.2
 --- !u!1 &1216277777
 GameObject:
   m_ObjectHideFlags: 0
