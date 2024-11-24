@@ -1823,6 +1823,7 @@ GameObject:
   - component: {fileID: 1814464184}
   - component: {fileID: 1814464186}
   - component: {fileID: 1814464185}
+  - component: {fileID: 1814464187}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player2
@@ -1980,6 +1981,22 @@ MonoBehaviour:
   - {fileID: 1403685971050052826, guid: 86074ea2ebf6e4a4e83f760d2b3eed86, type: 3}
   canvasTransform: {fileID: 281486012}
   powerUpImagePosition: {x: 3250, y: -471.25, z: 0}
+--- !u!114 &1814464187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814464176}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1c5b403dfe0a404685ee38c5d792551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 7751253090851320064, guid: e26ef923f0df2cb499add3d98d187a95,
+    type: 3}
+  shootingPoint2: {fileID: 1216277778}
+  fireRate: 0.2
 --- !u!4 &1856430158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 545cc4898c274a442a3fae8f9c68bcfa,
