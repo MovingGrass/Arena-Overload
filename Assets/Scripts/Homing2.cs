@@ -23,7 +23,7 @@ public class Homing2: MonoBehaviour, IPowerUp
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && Time.time >= nextFireTime)
+        if (Input.GetKey(KeyCode.Return) && Time.time >= nextFireTime)
         {
             ShootBullet();
             nextFireTime = Time.time + fireRate;

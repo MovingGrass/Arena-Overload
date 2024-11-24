@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefaultGun2 : MonoBehaviour
+public class DefaultGun2 : MonoBehaviour, IWeapon
 {
     // Start is called before the first frame update
     public GameObject bulletPrefab;
