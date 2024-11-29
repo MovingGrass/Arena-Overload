@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player1Movement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public Animator animator;
     private Rigidbody rb;
 
     void Start()
@@ -19,6 +20,8 @@ public class Player1Movement : MonoBehaviour
 
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        animator.SetFloat("Horizontal", moveHorizontal);
+        animator.SetFloat("Vertical", moveVertical);
 
         // Rotate the player to face the direction of movement
         if (movement != Vector3.zero)

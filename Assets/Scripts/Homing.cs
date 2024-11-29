@@ -1,12 +1,14 @@
-using UnityEngine;
-using System.Collections.Generic;
 using System.Collections;
-public class DefaultGun1 : MonoBehaviour, IWeapon
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Homing : MonoBehaviour, IPowerUp
 {
     public GameObject bulletPrefab;
     public Transform shootingPoint1;
     public float fireRate = 0.2f;
     private float nextFireTime = 0f;
+     public float Duration => 10f;
 
     public void Activate()
     {

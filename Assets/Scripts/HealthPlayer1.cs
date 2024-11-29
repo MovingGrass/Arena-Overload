@@ -16,6 +16,8 @@ public class HealthPlayer1 : MonoBehaviour
     [SerializeField] private Image frontHealthBar;
     [SerializeField] private Image backHealthBar;
 
+    [SerializeField] private Vector3 offset = new Vector3(0, 3, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,7 +63,7 @@ public class HealthPlayer1 : MonoBehaviour
     {
         health -= damage;
         lerpTimer = 0f;
-        ShowFloatingText();
+        ShowFloatingText(damage);
     }
 
     public void HealPlayer1(float heal)
@@ -70,10 +72,10 @@ public class HealthPlayer1 : MonoBehaviour
         lerpTimer = 0f;
     }
 
-    void ShowFloatingText()
+    void ShowFloatingText(float damage)
     {
-        var go = Instantiate(FloatingText, transform.position, Quaternion.identity, transform);
-        go.GetComponent<TMP_Text>().text = health.ToString(); 
+        var go = Instantiate(FloatingText, transform.position + offset, Quaternion.identity, transform);
+        go.GetComponent<TMP_Text>().text = damage.ToString(); 
     }
 
 

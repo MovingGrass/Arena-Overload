@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-public class DefaultGun1 : MonoBehaviour, IWeapon
+public class RapidFire : MonoBehaviour, IPowerUp
 {
     public GameObject bulletPrefab;
     public Transform shootingPoint1;
-    public float fireRate = 0.2f;
+    public float fireRate = 0.05f;
     private float nextFireTime = 0f;
+
+    public float Duration => 10f; // Set the duration for this power-up
 
     public void Activate()
     {
