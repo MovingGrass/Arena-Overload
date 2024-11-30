@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 
@@ -17,6 +18,11 @@ public class HealthPlayer1 : MonoBehaviour
     [SerializeField] private Image backHealthBar;
 
     [SerializeField] private Vector3 offset = new Vector3(0, 3, 0);
+
+    [SerializeField] private  MonoBehaviour[] scriptsToManage;
+
+    [SerializeField] private GameObject Player2Panel;
+    [SerializeField] private GameObject CanvasUI;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +63,11 @@ public class HealthPlayer1 : MonoBehaviour
             frontHealthBar.fillAmount = Mathf.Lerp(fillF, backHealthBar.fillAmount, percentComplete);
 
         }
+
+        if(health <= 0)
+        {
+            die();
+        }
     }
 
     public void TakeDamagePlayer1(float damage)
@@ -78,5 +89,29 @@ public class HealthPlayer1 : MonoBehaviour
         go.GetComponent<TMP_Text>().text = damage.ToString(); 
     }
 
+    public void die()
+    {
+        foreach (MonoBehaviour script in scriptsToManage)
+        {
+            if (script != null)
+            {
+                script.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("A null script was found in the array and skipped.");
+            }
+        }
+
+        StartCoroutine(diePanel());
+
+    }
+
+    IEnumerator diePanel()
+    {
+        yield return new WaitForSeconds(2f);
+        Player2Panel.SetActive(true);
+        CanvasUI.SetActive(false);
+    }
 
 }

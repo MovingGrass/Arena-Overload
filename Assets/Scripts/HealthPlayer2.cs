@@ -17,6 +17,12 @@ public class HealthPlayer2 : MonoBehaviour
 
     [SerializeField] private Vector3 offset = new Vector3(0, 3, 0);
 
+    [SerializeField] private  MonoBehaviour[] scriptsToManage;
+
+    [SerializeField] private GameObject Player1Panel;
+
+    [SerializeField] private GameObject CanvasUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +62,11 @@ public class HealthPlayer2 : MonoBehaviour
             frontHealthBar.fillAmount = Mathf.Lerp(fillF, backHealthBar.fillAmount, percentComplete);
 
         }
+
+        if(health <= 0)
+        {
+            die();
+        }
     }
 
     public void TakeDamagePlayer2(float damage)
@@ -75,5 +86,30 @@ public class HealthPlayer2 : MonoBehaviour
     {
         var go = Instantiate(FloatingText, transform.position + offset, Quaternion.identity, transform);
         go.GetComponent<TMP_Text>().text = damage.ToString();
+    }
+
+    public void die()
+    {
+        foreach (MonoBehaviour script in scriptsToManage)
+        {
+            if (script != null)
+            {
+                script.enabled = false;
+            }
+            else
+            {
+                Debug.LogWarning("A null script was found in the array and skipped.");
+            }
+        }
+
+        StartCoroutine(diePanel());
+
+    }
+
+    IEnumerator diePanel()
+    {
+        yield return new WaitForSeconds(2f);
+        Player1Panel.SetActive(true);
+        CanvasUI.SetActive(false);
     }
 }
