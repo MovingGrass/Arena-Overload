@@ -888,7 +888,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25256246, y: 0.017085014, z: -0.004460354, w: 0.9674195}
+  m_LocalRotation: {x: 0.25256243, y: 0.017085044, z: -0.0044603613, w: 0.9674195}
   m_LocalPosition: {x: 5.3021903, y: 14.346223, z: -4.5105705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3289,8 +3289,9 @@ MonoBehaviour:
   - {fileID: 1211577998}
   - {fileID: 1211577997}
   - {fileID: 1211578000}
-  Player2Panel: {fileID: 729664631}
+  Player2Panel: {fileID: 1243751499}
   CanvasUI: {fileID: 505097284}
+  animator: {fileID: 50539026341244422}
 --- !u!114 &1211577997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3537,7 +3538,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310591769}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.25256246, y: 0.017085014, z: -0.004460353, w: 0.9674195}
+  m_LocalRotation: {x: 0.25256243, y: 0.017085044, z: -0.0044603613, w: 0.9674195}
   m_LocalPosition: {x: 5.3021903, y: 14.346223, z: -4.5105705}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4138,8 +4139,9 @@ MonoBehaviour:
   - {fileID: 1814464186}
   - {fileID: 1814464185}
   - {fileID: 1814464187}
-  Player1Panel: {fileID: 1243751499}
+  Player1Panel: {fileID: 729664631}
   CanvasUI: {fileID: 505097284}
+  animator: {fileID: 151015667607499116}
 --- !u!114 &1814464185
 MonoBehaviour:
   m_ObjectHideFlags: 0

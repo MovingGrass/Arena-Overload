@@ -5,10 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-
 public class HealthPlayer1 : MonoBehaviour
 {
-
     private float health;
     private float lerpTimer;
     [SerializeField] private GameObject FloatingText;
@@ -18,17 +16,18 @@ public class HealthPlayer1 : MonoBehaviour
     [SerializeField] private Image backHealthBar;
 
     [SerializeField] private Vector3 offset = new Vector3(0, 3, 0);
-
-    [SerializeField] private  MonoBehaviour[] scriptsToManage;
+    [SerializeField] private MonoBehaviour[] scriptsToManage;
 
     [SerializeField] private GameObject Player2Panel;
     [SerializeField] private GameObject CanvasUI;
+
+    // Tambahan Animator
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         health = maxhealth;
-        
     }
 
     // Update is called once per frame
@@ -36,6 +35,12 @@ public class HealthPlayer1 : MonoBehaviour
     {
         health = Mathf.Clamp(health, 0, maxhealth);
         UpdateHealthUIplayer1();
+
+        // Atur animasi mati berdasarkan kesehatan
+        if (health <= 0)
+        {
+            animator.SetBool("IsDead", true);
+        }
     }
 
     public void UpdateHealthUIplayer1()
@@ -44,7 +49,7 @@ public class HealthPlayer1 : MonoBehaviour
         float fillF = frontHealthBar.fillAmount;
         float fillB = backHealthBar.fillAmount;
         float hfraction = health / maxhealth;
-        if(fillB > hfraction)
+        if (fillB > hfraction)
         {
             frontHealthBar.fillAmount = hfraction;
             backHealthBar.color = Color.red;
@@ -53,7 +58,7 @@ public class HealthPlayer1 : MonoBehaviour
             backHealthBar.fillAmount = Mathf.Lerp(fillB, hfraction, percentComplete);
         }
 
-        if(fillF < hfraction)
+        if (fillF < hfraction)
         {
             backHealthBar.color = Color.green;
             backHealthBar.fillAmount = hfraction;
@@ -61,10 +66,9 @@ public class HealthPlayer1 : MonoBehaviour
             float percentComplete = lerpTimer / chipSpeed;
             percentComplete = percentComplete * percentComplete;
             frontHealthBar.fillAmount = Mathf.Lerp(fillF, backHealthBar.fillAmount, percentComplete);
-
         }
 
-        if(health <= 0)
+        if (health <= 0)
         {
             die();
         }
@@ -86,7 +90,7 @@ public class HealthPlayer1 : MonoBehaviour
     void ShowFloatingText(float damage)
     {
         var go = Instantiate(FloatingText, transform.position + offset, Quaternion.identity, transform);
-        go.GetComponent<TMP_Text>().text = damage.ToString(); 
+        go.GetComponent<TMP_Text>().text = damage.ToString();
     }
 
     public void die()
@@ -103,8 +107,13 @@ public class HealthPlayer1 : MonoBehaviour
             }
         }
 
-        StartCoroutine(diePanel());
+        // Pastikan animasi mati hanya dimainkan sekali
+        if (animator != null && !animator.GetBool("IsDead"))
+        {
+            animator.SetBool("IsDead", true);
+        }
 
+        StartCoroutine(diePanel());
     }
 
     IEnumerator diePanel()
@@ -113,5 +122,4 @@ public class HealthPlayer1 : MonoBehaviour
         Player2Panel.SetActive(true);
         CanvasUI.SetActive(false);
     }
-
 }

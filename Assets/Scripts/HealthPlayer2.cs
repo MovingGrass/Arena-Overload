@@ -23,6 +23,8 @@ public class HealthPlayer2 : MonoBehaviour
 
     [SerializeField] private GameObject CanvasUI;
 
+    [SerializeField] private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,11 @@ public class HealthPlayer2 : MonoBehaviour
     {
         health = Mathf.Clamp(health, 0, maxhealth);
         UpdateHealthUIplayer2();
+
+        if (health <= 0)
+        {
+            animator.SetBool("IsDead", true);
+        }
     }
 
     public void UpdateHealthUIplayer2()
@@ -100,6 +107,10 @@ public class HealthPlayer2 : MonoBehaviour
             {
                 Debug.LogWarning("A null script was found in the array and skipped.");
             }
+        }
+        if (animator != null && !animator.GetBool("IsDead"))
+        {
+            animator.SetBool("IsDead", true);
         }
 
         StartCoroutine(diePanel());
