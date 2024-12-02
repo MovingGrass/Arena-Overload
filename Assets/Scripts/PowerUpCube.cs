@@ -77,7 +77,6 @@ public class PowerUpCube : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         // Hide the cube (you might want to replace this with your explosion animation)
-        GetComponent<Renderer>().enabled = false;
 
         // Wait for the specified delay
         yield return new WaitForSeconds(destroyDelay);

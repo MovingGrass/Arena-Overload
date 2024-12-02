@@ -18,7 +18,7 @@ public class BulletBehavior : MonoBehaviour
         // Set the bullet's velocity
         rb.velocity = transform.forward * bulletSpeed;
 
-        Destroy(gameObject, 1f); // Destroy the bullet after 1 second
+        Destroy(gameObject, 5f); // Destroy the bullet after 1 second
     }
 
     // Detect collision
