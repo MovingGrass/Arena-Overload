@@ -9,7 +9,9 @@ public class Homing2: MonoBehaviour, IPowerUp
     public Transform shootingPoint2;
     public float fireRate = 0.2f;
     private float nextFireTime = 0f;
-     public float Duration => 10f;
+    public float Duration => 10f;
+    
+    
 
     public void Activate()
     {
@@ -32,6 +34,7 @@ public class Homing2: MonoBehaviour, IPowerUp
 
     void ShootBullet()
     {
-        Instantiate(bulletPrefab, shootingPoint2.position, shootingPoint2.rotation);
+        Quaternion rotation = shootingPoint2.rotation * Quaternion.Euler(0f, 0f, 0f);
+        Instantiate(bulletPrefab, shootingPoint2.position, rotation);
     }
 }

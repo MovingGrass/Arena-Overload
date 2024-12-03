@@ -9,6 +9,8 @@ public class Heal : MonoBehaviour
     private HealthPlayer1 healthPlayer1;
 
     [SerializeField] private float healAmount = 70f;
+
+    [SerializeField] private AudioSource udio;
     
     void Awake()
     {
@@ -32,6 +34,7 @@ public class Heal : MonoBehaviour
 
     IEnumerator DestroySequence()
     {
+        udio.Play();
         // Disable the collider to prevent multiple triggers
         GetComponent<Collider>().enabled = false;
 
