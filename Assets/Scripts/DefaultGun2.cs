@@ -1,22 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.VFX;
+using System.Collections;
 
-public class DefaultGun2 : MonoBehaviour, IWeapon
+public class DefaultGun2 : MonoBehaviour, IWeapon 
 {
-    // Start is called before the first frame update
     public GameObject bulletPrefab;
     public Transform shootingPoint2;
-    public float fireRate = 0.2f;  // Time between shots
+    public float fireRate = 0.2f;
     private float nextFireTime = 0f;
 
     // VFX components
     public VisualEffect muzzleFlashVFX;
-
-
+    
     // Optional: VFX lifetime duration
     public float vfxDuration = 0.1f;
+
+    
 
     private void Start()
     {
@@ -44,10 +43,14 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return) && Time.time >= nextFireTime)
+        // Check for keyboard or joystick input
+        bool firePressed = Input.GetKey(KeyCode.Return) || 
+                           Input.GetButton("Fire2");
+
+        if (firePressed && Time.time >= nextFireTime)
         {
             ShootBullet();
-            PlayShootingVFX(); // Tambahkan ini
+            PlayShootingVFX();
             nextFireTime = Time.time + fireRate;
         }
     }
@@ -63,7 +66,7 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
         {
             // Play the VFX
             muzzleFlashVFX.Play();
-
+            
             // Optional: Stop the VFX after duration
             StartCoroutine(StopVFXAfterDuration(muzzleFlashVFX, vfxDuration));
         }

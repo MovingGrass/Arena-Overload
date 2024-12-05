@@ -4244,6 +4244,8 @@ MonoBehaviour:
     type: 3}
   shootingPoint1: {fileID: 1600849556}
   fireRate: 0.05
+  muzzleFlashVFX: {fileID: 1503514383}
+  vfxDuration: 0.1
 --- !u!114 &1211577998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4281,6 +4283,8 @@ MonoBehaviour:
     type: 3}
   shootingPoint1: {fileID: 1600849556}
   fireRate: 0.2
+  muzzleFlashVFX: {fileID: 1503514383}
+  vfxDuration: 0.1
 --- !u!114 &1211578001
 MonoBehaviour:
   m_ObjectHideFlags: 0

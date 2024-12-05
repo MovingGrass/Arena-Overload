@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.VFX;
-using System.Collections.Generic;
 using System.Collections;
 
-public class DefaultGun1 : MonoBehaviour, IWeapon
+public class DefaultGun1 : MonoBehaviour, IWeapon 
 {
     public GameObject bulletPrefab;
     public Transform shootingPoint1;
@@ -12,10 +11,11 @@ public class DefaultGun1 : MonoBehaviour, IWeapon
 
     // VFX components
     public VisualEffect muzzleFlashVFX;
-
-
+    
     // Optional: VFX lifetime duration
     public float vfxDuration = 0.1f;
+
+    
 
     private void Start()
     {
@@ -43,7 +43,11 @@ public class DefaultGun1 : MonoBehaviour, IWeapon
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.E) && Time.time >= nextFireTime)
+        // Check for keyboard or joystick input
+        bool firePressed = Input.GetKey(KeyCode.E) || 
+                           Input.GetButton("Fire1");
+
+        if (firePressed && Time.time >= nextFireTime)
         {
             ShootBullet();
             PlayShootingVFX();
@@ -62,7 +66,7 @@ public class DefaultGun1 : MonoBehaviour, IWeapon
         {
             // Play the VFX
             muzzleFlashVFX.Play();
-
+            
             // Optional: Stop the VFX after duration
             StartCoroutine(StopVFXAfterDuration(muzzleFlashVFX, vfxDuration));
         }
