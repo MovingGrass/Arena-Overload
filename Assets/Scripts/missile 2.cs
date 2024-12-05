@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX; // Tambahkan ini
 
 public class missile2 : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class missile2 : MonoBehaviour
     [SerializeField] private float maxLifetime = 5f;
 
     [SerializeField] private float bulletDamage = 10f;
-    
+
+    [Header("VFX")]
+    [SerializeField] private GameObject hitVFXPrefab; // Referensi ke prefab VFX
+
     private Transform playerTarget;
     private Rigidbody rb;
 
@@ -59,6 +63,17 @@ public class missile2 : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // Spawn VFX saat terjadi impact
+        if (hitVFXPrefab != null)
+        {
+            ContactPoint contact = collision.contacts[0];
+            Vector3 position = contact.point;
+
+            // Spawn VFX di titik impact dengan rotasi menghadap normal permukaan
+            GameObject vfx = Instantiate(hitVFXPrefab, position, Quaternion.LookRotation(contact.normal));
+            Destroy(vfx, 2f); // Hancurkan VFX setelah 2 detik
+        }
+
         // Handle impact effects here (explosion, damage, etc)
         if (collision.collider.CompareTag("Player1"))
         {

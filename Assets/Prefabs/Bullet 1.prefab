@@ -106,6 +106,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 70
   bulletDamage: 10
+  hitVFXPrefab: {fileID: 2284149916698440445, guid: ae94ed46c2a414741822b20a30d57fe0,
+    type: 3}
 --- !u!54 &5947127492941002200
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -140,4 +140,6 @@ MonoBehaviour:
   bobHeight: 0.5
   explosionEffectPrefab: {fileID: 3204769372483903318, guid: 6b755b261a9659246af4293bfb3ea6d9,
     type: 3}
+  vfxEffectPrefab: {fileID: 7565218031630619583, guid: 6cea97bf4bcd04e4084ae0ccc5281f9d,
+    type: 3}
   destroyDelay: 0

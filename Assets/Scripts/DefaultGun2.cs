@@ -15,7 +15,12 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
     // Optional: VFX lifetime duration
     public float vfxDuration = 0.1f;
 
-    
+    // Audio components
+    [Header("Audio Settings")]
+    private AudioSource audioSource;
+    public AudioClip shootingSound;
+    [Range(0f, 1f)]
+    public float shootVolume = 1f;
 
     private void Start()
     {
@@ -24,6 +29,18 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
         {
             Debug.LogWarning("Muzzle Flash VFX not assigned to " + gameObject.name);
         }
+
+        // Get or Add AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
+
+        // Configure AudioSource settings
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 1f; // 1 = fully 3D sound
+        audioSource.volume = shootVolume;
     }
 
     public void Activate()
@@ -51,6 +68,7 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
         {
             ShootBullet();
             PlayShootingVFX();
+            PlayShootingSound();
             nextFireTime = Time.time + fireRate;
         }
     }
@@ -69,6 +87,19 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
             
             // Optional: Stop the VFX after duration
             StartCoroutine(StopVFXAfterDuration(muzzleFlashVFX, vfxDuration));
+        }
+    }
+
+    void PlayShootingSound()
+    {
+        if (shootingSound != null && audioSource != null)
+        {
+            audioSource.clip = shootingSound;
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Shooting sound or AudioSource not assigned to " + gameObject.name);
         }
     }
 

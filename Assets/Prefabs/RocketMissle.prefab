@@ -170,3 +170,5 @@ MonoBehaviour:
   rotationSpeed: 150
   maxLifetime: 5
   bulletDamage: 10
+  hitVFXPrefab: {fileID: 2284149916698440445, guid: ae94ed46c2a414741822b20a30d57fe0,
+    type: 3}
