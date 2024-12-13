@@ -17,8 +17,10 @@ public class Player1Movement : MonoBehaviour
     void FixedUpdate()
     {
         // Get input from either keyboard or controller 1
-        float moveHorizontal = Input.GetAxis("Horizontal") + Input.GetAxis("Joy1X");
+        float moveHorizontal = Input.GetAxisRaw("Horizontal") + Input.GetAxis("Joy1X");
         float moveVertical = Input.GetAxis("Vertical") + Input.GetAxis("Joy1Y");
+
+        Debug.Log(moveHorizontal);
         
         Vector3 movement = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);

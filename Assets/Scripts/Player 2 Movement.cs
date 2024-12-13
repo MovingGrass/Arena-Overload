@@ -17,8 +17,8 @@ public class Player2Movement : MonoBehaviour
     void FixedUpdate()
     {
         // Get input from either keyboard or controller 2
-        float moveHorizontal = Input.GetAxis("Joy2X");
-        float moveVertical = Input.GetAxis("Joy2Y");
+        float moveHorizontal = Input.GetAxisRaw("Joy2X");
+        float moveVertical = Input.GetAxisRaw("Joy2Y");
         
         // Also allow arrow keys for player 2
         if (Input.GetKey(KeyCode.LeftArrow)) moveHorizontal -= 1;

@@ -41,7 +41,7 @@ public class RapidFire2 : MonoBehaviour, IPowerUp
     void Update()
     {
         // Check for keyboard or joystick input
-        bool firePressed = Input.GetKey(KeyCode.E) || 
+        bool firePressed = Input.GetKey(KeyCode.Mouse0) || 
                            Input.GetButton("Fire1");
 
         if (firePressed && Time.time >= nextFireTime)

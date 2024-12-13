@@ -61,7 +61,7 @@ public class DefaultGun2 : MonoBehaviour, IWeapon
     void Update()
     {
         // Check for keyboard or joystick input
-        bool firePressed = Input.GetKey(KeyCode.Return) || 
+        bool firePressed = Input.GetKey(KeyCode.Mouse0) || 
                            Input.GetButton("Fire2");
 
         if (firePressed && Time.time >= nextFireTime)
